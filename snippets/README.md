@@ -40,6 +40,7 @@ WooCommerce and other e-commerce platform integrations and customizations.
 
 - **[WooCommerce Subscription Renewal Tags](./ecommerce-integration/woocommerce-subscription-renewal-tags.md)** - Prevents applying "active" tags during subscription renewals
 - **[FooEvents Multiple Event Sync](./ecommerce-integration/fooevents-multiple-event-sync.md)** - Syncs multiple FooEvents registrations to numbered custom fields per contact
+- **[WooCommerce Custom Order Status Processing](./ecommerce-integration/woocommerce-custom-order-statuses.md)** - Customizes which order statuses trigger WP Fusion processing and CRM sync
 
 ### 🐛 [Debugging & Logging](./debugging-logging/)
 Development and troubleshooting tools for WP Fusion implementations.
@@ -143,5 +144,5 @@ Found a bug or have an improvement? See the main [README](../README.md) for cont
 
 ---
 
-**Total Snippets:** 15 organized snippets  
+**Total Snippets:** 16 organized snippets  
 **Last Updated:** Generated from [Jack Arturo's GitHub Gists](https://gist.github.com/jack-arturo/) (Pages 1, 2 & 3) + Custom implementations
