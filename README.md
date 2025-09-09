@@ -1,83 +1,91 @@
 # WP Fusion Custom Snippets
 
-A curated collection of custom code snippets to extend and enhance WP Fusion functionality. This repository provides ready-to-use code examples and modifications that can be easily implemented using various methods.
+<div align="center">
+
+![WP Fusion Logo](https://wpfusion.com/wp-content/uploads/2019/03/logo@2x.png)
+
+**🚀 Extend the Power of WordPress's #1 Marketing Automation Plugin**
+
+[![WordPress Sites](https://img.shields.io/badge/Powering-38%2C000%2B%20Sites-orange)](https://wpfusion.com?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
+[![CRMs Supported](https://img.shields.io/badge/CRMs%20Supported-60%2B-blue)](https://wpfusion.com/documentation/getting-started/crm-compatibility/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
+[![Plugin Integrations](https://img.shields.io/badge/Plugin%20Integrations-150%2B-green)](https://wpfusion.com/documentation/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
+[![License](https://img.shields.io/badge/License-GPL%20v3-lightgrey)](LICENSE)
+
+A curated collection of custom code snippets to extend and enhance WP Fusion functionality. Ready-to-use solutions that unlock even more possibilities for your marketing automation workflows.
+
+[Get WP Fusion](https://wpfusion.com/pricing/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) | [Documentation](https://wpfusion.com/documentation/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) | [Support](https://wpfusion.com/support/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) | [Join Community](https://www.facebook.com/groups/wpfusion/)
+
+</div>
+
+---
+
+## 🎯 What is WP Fusion?
+
+**WP Fusion** is the most powerful and flexible marketing automation plugin for WordPress. It connects your WordPress site to your CRM or marketing automation platform, creating seamless two-way data sync that transforms how you engage with your audience.
+
+### Why 38,000+ Sites Trust WP Fusion
+
+- **🔌 60+ CRM Integrations** - From HubSpot to ActiveCampaign, Salesforce to Mailchimp, we've got you covered
+- **🧩 150+ Plugin Integrations** - Deep integration with WooCommerce, LearnDash, MemberPress, BuddyBoss, and more
+- **⚡ Real-Time Sync** - Instant data synchronization keeps your CRM always up-to-date
+- **🎯 Smart Automation** - Trigger actions based on user behavior, purchases, course progress, and more
+- **🔒 Content Personalization** - Show different content to different users based on CRM tags
+- **🛠️ Developer Friendly** - Extensive hooks, filters, and this snippet library for endless customization
+
+### The Power of Open Source
+
+WP Fusion isn't just a plugin—it's a platform. Built on WordPress's open architecture, it's infinitely extensible through custom code. This repository showcases that extensibility with battle-tested snippets from our community of developers and power users.
 
 ## 📋 Table of Contents
 
-- [Installation Methods](#installation-methods)
-  - [Method 1: functions.php File](#method-1-functionsphp-file)
-  - [Method 2: Custom Plugin](#method-2-custom-plugin)
-  - [Method 3: FluentSnippets Plugin](#method-3-fluentsnippets-plugin)
-- [Snippet Categories](#snippet-categories)
-- [Usage Guidelines](#usage-guidelines)
-- [Contributing](#contributing)
-- [Support](#support)
+- [Quick Start](#-quick-start)
+- [Installation Methods](#-installation-methods)
+- [Snippet Categories](#-snippet-categories)
+- [Featured Snippets](#-featured-snippets)
+- [Usage Guidelines](#-usage-guidelines)
+- [Contributing](#-contributing)
+- [Resources & Support](#-resources--support)
 
-## 🚀 Installation Methods
+## 🚀 Quick Start
 
-There are three primary ways to add these custom code snippets to your WordPress site. Choose the method that best fits your workflow and technical comfort level.
+Get up and running in minutes:
+
+1. **Have WP Fusion installed** ([Get it here](https://wpfusion.com/pricing/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) or start with [WP Fusion Lite](https://wordpress.org/plugins/wp-fusion-lite/))
+2. **Browse our [snippet categories](#-snippet-categories)** to find what you need
+3. **Choose an [installation method](#-installation-methods)** that fits your workflow
+4. **Copy, customize, and deploy** - Each snippet includes detailed documentation
+
+## 🛠️ Installation Methods
+
+Three ways to add these snippets to your site - choose what works best for you:
 
 ### Method 1: functions.php File
 
-**Best for:** Simple customizations, temporary testing, or when you have a child theme.
+**Best for:** Quick testing, simple customizations
 
-**Pros:**
-- Quick and easy implementation
-- No additional plugins required
-- Immediate activation
+Add snippets directly to your theme's `functions.php`:
 
-**Cons:**
-- Code is lost when switching themes (unless using a child theme)
-- Can break the site if there are PHP errors
-- Harder to manage multiple snippets
-
-**How to use:**
-
-1. Navigate to `Appearance > Theme Editor` in your WordPress admin
-2. Select your active theme (or preferably, your child theme)
-3. Open the `functions.php` file
-4. Add your snippet at the end of the file, before the closing `?>` tag (if it exists)
-5. Click "Update File"
-
-**Example:**
 ```php
-// Add this to your theme's functions.php file
-add_action( 'wp_fusion_user_login', 'my_custom_login_function' );
-function my_custom_login_function( $user_id ) {
-    // Your custom code here
-    error_log( 'User logged in: ' . $user_id );
+// Add to your theme's functions.php (preferably in a child theme)
+add_action( 'wpf_tags_modified', 'my_custom_function', 10, 2 );
+function my_custom_function( $user_id, $tags ) {
+    // Your custom logic here
 }
 ```
 
-**⚠️ Important:** Always use a child theme to prevent losing customizations when the parent theme updates.
+⚠️ **Pro tip:** Always use a child theme to preserve customizations during updates
 
 ### Method 2: Custom Plugin
 
-**Best for:** Permanent customizations, complex functionality, or when managing multiple sites.
+**Best for:** Production sites, version control, portability
 
-**Pros:**
-- Survives theme changes
-- Easy to activate/deactivate
-- Can be version controlled
-- Portable across sites
+Create a custom plugin for your snippets:
 
-**Cons:**
-- Requires creating a plugin file
-- Slightly more complex setup
-
-**How to create:**
-
-1. Create a new folder in `/wp-content/plugins/` (e.g., `wp-fusion-custom`)
-2. Create a main plugin file (e.g., `wp-fusion-custom.php`)
-3. Add the plugin header and your code
-4. Activate the plugin from the WordPress admin
-
-**Plugin Template:**
 ```php
 <?php
 /**
- * Plugin Name: WP Fusion Custom Snippets
- * Description: Custom functionality for WP Fusion
+ * Plugin Name: WP Fusion Custom Extensions
+ * Description: Custom functionality extending WP Fusion
  * Version: 1.0.0
  * Author: Your Name
  */
@@ -87,132 +95,144 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// Your custom functions go here
-function my_custom_login_function( $user_id ) {
-    // Your custom code here
-    error_log( 'User logged in: ' . $user_id );
-}
-
-add_action( 'wp_fusion_user_login', 'my_custom_login_function' );
+// Your custom snippets here
 ```
+
+Save as `/wp-content/plugins/wpf-custom/wpf-custom.php` and activate
 
 ### Method 3: FluentSnippets Plugin
 
-**Best for:** Non-technical users, easy management, or when you need conditional logic.
+**Best for:** Non-developers, conditional logic, easy management
 
-**Pros:**
-- User-friendly interface
-- File-based storage (no database queries)
-- Built-in error handling
-- Conditional logic support
-- Easy to enable/disable snippets
-- Survives theme changes
-
-**Cons:**
-- Requires installing an additional plugin
-- Learning curve for the interface
-
-**How to use:**
-
-1. Install the [FluentSnippets plugin](https://wordpress.org/plugins/easy-code-manager/)
-2. Go to `FluentSnippets > Add New` in your WordPress admin
-3. Choose snippet type:
-   - **Functions (PHP):** For hooks, filters, and custom functions
-   - **Content (PHP + HTML):** For output content
-   - **CSS:** For styling
-   - **JS:** For JavaScript code
-4. Add your code and configure conditions if needed
-5. Save and activate the snippet
-
-**FluentSnippets Features:**
-- **Zero Database Queries:** Snippets are stored as files for maximum performance
-- **Conditional Logic:** Execute snippets based on user roles, page types, dates, etc.
-- **Error Handling:** Prevents broken sites from PHP errors
-- **Stand-alone Mode:** Snippets continue working even if the plugin is deactivated
-- **Shortcode Support:** Create reusable content blocks
-
-**Example FluentSnippets Setup:**
-1. Create a new "Functions" type snippet
-2. Add your WP Fusion code
-3. Set conditions (e.g., only on specific pages)
-4. Save and activate
+1. Install [FluentSnippets](https://wordpress.org/plugins/easy-code-manager/)
+2. Add snippets through the visual interface
+3. Set conditions and manage activation states
+4. Zero database queries - snippets stored as files
 
 ## 📁 Snippet Categories
 
-This repository organizes snippets into the following categories:
+Organized by functionality for easy discovery:
 
-- **Activity Tracking:** Custom user activity tracking
-- **Authentication & Login:** Custom login behaviors, user sync modifications
-- **Contact Management:** Contact field customizations, data manipulation
-- **E-commerce Integration:** WooCommerce, EDD, and other e-commerce enhancements
-- **Email Marketing:** Custom email triggers, list management
-- **Form Integration:** Contact form customizations and data handling
-- **User Management:** Role modifications, user data sync
-- **API Extensions:** Custom API endpoints and webhooks
-- **Debugging & Logging:** Development and troubleshooting tools
+### 🔐 [Access Control](./snippets/access-control/)
+Manage content restrictions, redirects, and user permissions
+- LearnDash redirects, IP-based unlocks, login customizations
+
+### 📊 [Activity Tracking](./snippets/activity-tracking/)
+Advanced user behavior tracking and attribution
+- UTM tracking, lead source sync, engagement metrics
+
+### 🔧 [API Extensions](./snippets/api-extensions/)
+Enhance WP Fusion's API capabilities
+- Performance optimizations, webhook management, custom methods
+
+### 🤖 [Automation Workflows](./snippets/automation-workflows/)
+Create sophisticated automation triggers
+- Pageview tracking, visit-based tags, content engagement
+
+### 💳 [E-commerce Integration](./snippets/ecommerce-integration/)
+WooCommerce and e-commerce enhancements
+- Subscription tracking, custom order statuses, event sync
+
+### 👥 [User Management](./snippets/user-management/)
+User data handling and personalization
+- Dynamic styling, custom fields, role management
+
+[View all 20+ snippets →](./snippets/)
+
+## ⭐ Featured Snippets
+
+Popular solutions from our community:
+
+### 🛒 [WooCommerce Subscription Signup Tracking](./snippets/ecommerce-integration/woocommerce-subscription-signup-tracking-hubspot.md)
+Track new subscriptions in HubSpot with timestamps for time-based reporting
+
+### 🎓 [LearnDash Previous Page Redirect](./snippets/access-control/learndash-previous-page-redirect.md)
+Smart redirects that remember where users came from
+
+### ⚡ [Non-Blocking Login API Calls](./snippets/api-extensions/non-blocking-login-api-calls.md)
+Speed up login times with slow CRMs
+
+### 🔄 [Webhook Loopback Prevention](./snippets/api-extensions/webhook-loopback-prevention.md)
+Prevent infinite webhook loops in your automations
 
 ## 📖 Usage Guidelines
 
 ### Before Installing Any Snippet:
 
-1. **Backup Your Site:** Always create a full backup before adding custom code
-2. **Test on Staging:** Test snippets on a staging environment first
-3. **Read the Documentation:** Understand what each snippet does
-4. **Check Compatibility:** Ensure compatibility with your WP Fusion version
-5. **Review Dependencies:** Some snippets may require specific plugins or settings
+✅ **Always:**
+- Create a full backup
+- Test on staging first
+- Read the documentation
+- Check WP Fusion version compatibility
+
+❌ **Never:**
+- Test on production sites
+- Mix incompatible snippets
+- Ignore error messages
 
 ### Best Practices:
 
-- Use descriptive function names with prefixes to avoid conflicts
-- Add comments to explain what your code does
-- Follow WordPress coding standards
-- Test thoroughly before deploying to production
-- Keep snippets organized and well-documented
-
-### Error Prevention:
-
-- Always check for function/class existence before defining them
-- Use proper WordPress hooks and filters
-- Validate and sanitize user input
-- Handle errors gracefully
-
-**Example of safe coding:**
 ```php
-// Check if function doesn't already exist
-if ( ! function_exists( 'my_custom_wp_fusion_function' ) ) {
-    function my_custom_wp_fusion_function() {
-        // Your code here
-    }
+// Always check dependencies
+if ( ! class_exists( 'WP_Fusion' ) ) {
+    return;
 }
 
-// Check if WP Fusion is active
-if ( class_exists( 'WP_Fusion' ) ) {
-    // WP Fusion specific code
+// Use proper namespacing
+if ( ! function_exists( 'wpf_custom_function' ) ) {
+    function wpf_custom_function() {
+        // Your code here
+    }
 }
 ```
 
 ## 🤝 Contributing
 
-We welcome contributions from the community! To contribute:
+We love contributions from our community! Here's how to share your snippets:
 
 1. Fork this repository
-2. Create a feature branch (`git checkout -b feature/new-snippet`)
-3. Add your snippet with proper documentation
+2. Create a feature branch (`git checkout -b feature/amazing-snippet`)
+3. Add your snippet with documentation
 4. Test thoroughly
 5. Submit a pull request
 
-**Contribution Guidelines:**
-- Include clear documentation for each snippet
-- Follow WordPress coding standards
-- Test with the latest version of WP Fusion
-- Include usage examples
-- Specify any dependencies or requirements
+**Contribution must include:**
+- Clear documentation
+- Usage examples
+- Compatibility notes
+- Test coverage
 
-## 📞 Support
+## 📚 Resources & Support
 
-- **Issues:** Report bugs or request features via [GitHub Issues](../../issues)
-- **Documentation:** Check the [WP Fusion documentation](https://wpfusion.com/documentation/)
-- **Community:** Join the [WP Fusion Facebook group](https://www.facebook.com/groups/wpfusion/)
+### Documentation
+- 📖 [Getting Started Guide](https://wpfusion.com/documentation/getting-started/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
+- 🔌 [CRM Setup Guides](https://wpfusion.com/documentation/getting-started/crm-compatibility/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
+- 🛠️ [Developer Documentation](https://wpfusion.com/documentation/advanced-developer-tutorials/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
+- 🎨 [Brand Assets](https://wpfusion.com/brand-assets/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
+
+### Getting Help
+- 💬 [Facebook Community](https://www.facebook.com/groups/wpfusion/) - 5,000+ members strong
+- 📧 [Priority Support](https://wpfusion.com/support/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) - For license holders
+- 🐛 [GitHub Issues](../../issues) - Bug reports and feature requests
+- 📺 [YouTube Tutorials](https://www.youtube.com/@verygoodplugins) - Video walkthroughs
+
+## 💰 Pricing & Plans
+
+### WP Fusion Lite (Free)
+- ✅ 60+ CRM integrations
+- ✅ User data sync
+- ✅ Basic automation
+- [Get it on WordPress.org](https://wordpress.org/plugins/wp-fusion-lite/)
+
+### WP Fusion Pro
+- ✅ Everything in Lite
+- ✅ 150+ plugin integrations
+- ✅ Advanced automation
+- ✅ E-commerce tracking
+- ✅ Priority support
+- ✅ 30-day money-back guarantee
+
+[View Pricing →](https://wpfusion.com/pricing/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
 
 ## ⚠️ Disclaimer
 
@@ -221,3 +241,15 @@ These snippets are provided as-is for educational and development purposes. Alwa
 ## 📄 License
 
 This project is licensed under the GPL v3 or later - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**Built with 🧡 by [Jack Arturo](https://github.com/jack-arturo) at [Very Good Plugins](https://verygoodplugins.com?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)**
+
+*Made with love for the WordPress open-source community*
+
+[Website](https://wpfusion.com?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) • [Documentation](https://wpfusion.com/documentation/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) • [Support](https://wpfusion.com/support/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) • [Facebook Group](https://www.facebook.com/groups/wpfusion/)
+
+</div>
