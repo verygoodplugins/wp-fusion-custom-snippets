@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![WP Fusion Logo](https://wpfusion.com/wp-content/uploads/2019/03/logo@2x.png)
+![WP Fusion Logo](https://wpfusion.com/wp-content/uploads/2019/08/logo-top-svg.svg)
 
 **🚀 Extend the Power of WordPress's #1 Marketing Automation Plugin**
 
@@ -13,7 +13,7 @@
 
 A curated collection of custom code snippets to extend and enhance WP Fusion functionality. Ready-to-use solutions that unlock even more possibilities for your marketing automation workflows.
 
-[Get WP Fusion](https://wpfusion.com/pricing/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) | [Documentation](https://wpfusion.com/documentation/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) | [Support](https://wpfusion.com/support/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) | [Join Community](https://www.facebook.com/groups/wpfusion/)
+[Get WP Fusion](https://wpfusion.com/pricing/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) | [Documentation](https://wpfusion.com/documentation/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) | [Support](https://wpfusion.com/contact/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) | [Join Community](https://www.facebook.com/groups/wpfusion/)
 
 </div>
 
@@ -206,15 +206,15 @@ We love contributions from our community! Here's how to share your snippets:
 
 ### Documentation
 - 📖 [Getting Started Guide](https://wpfusion.com/documentation/getting-started/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
-- 🔌 [CRM Setup Guides](https://wpfusion.com/documentation/getting-started/crm-compatibility/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
-- 🛠️ [Developer Documentation](https://wpfusion.com/documentation/advanced-developer-tutorials/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
+- 🔌 [CRM Setup Guides](https://wpfusion.com/documentation/getting-started/installation-guide/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
+- 🛠️ [Developer Documentation](https://wpfusion.com/documentation/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets#advanced-developer-tutorials)
 - 🎨 [Brand Assets](https://wpfusion.com/brand-assets/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)
 
 ### Getting Help
 - 💬 [Facebook Community](https://www.facebook.com/groups/wpfusion/) - 5,000+ members strong
 - 📧 [Priority Support](https://wpfusion.com/support/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) - For license holders
 - 🐛 [GitHub Issues](../../issues) - Bug reports and feature requests
-- 📺 [YouTube Tutorials](https://www.youtube.com/@verygoodplugins) - Video walkthroughs
+- 📺 [YouTube Tutorials](https://www.youtube.com/@wpfusion) - Video walkthroughs
 
 ## 💰 Pricing & Plans
 
@@ -246,10 +246,10 @@ This project is licensed under the GPL v3 or later - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-**Built with 🧡 by [Jack Arturo](https://github.com/jack-arturo) at [Very Good Plugins](https://verygoodplugins.com?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)**
+**Built with 🧡 by [Jack Arturo](https://github.com/verygoodplugins) at [Very Good Plugins](https://verygoodplugins.com?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets)**
 
 *Made with love for the WordPress open-source community*
 
-[Website](https://wpfusion.com?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) • [Documentation](https://wpfusion.com/documentation/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) • [Support](https://wpfusion.com/support/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) • [Facebook Group](https://www.facebook.com/groups/wpfusion/)
+[Website](https://wpfusion.com?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) • [Documentation](https://wpfusion.com/documentation/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) • [Support](https://wpfusion.com/contact/?utm_source=github&utm_medium=readme&utm_campaign=custom-snippets) • [Facebook Group](https://www.facebook.com/groups/wpfusion/)
 
 </div>
