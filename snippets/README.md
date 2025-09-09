@@ -14,6 +14,7 @@ Snippets for managing content access, redirects, and user permissions.
 
 - **[LearnDash Previous Page Redirect](./access-control/learndash-previous-page-redirect.md)** - Redirects users back to the previous page when accessing restricted LearnDash lessons instead of using default redirect
 - **[IP-Based Content Unlock](./access-control/ip-based-content-unlock.md)** - Bypasses content protection when accessing from specific IP addresses for office/VIP access
+- **[Return After Login Customizations](./access-control/return-after-login-customizations.md)** - Customize redirect behavior after users login to access restricted content
 
 ### 🔧 [API Extensions](./api-extensions/)
 Modifications and enhancements to WP Fusion's API functionality.
@@ -21,6 +22,8 @@ Modifications and enhancements to WP Fusion's API functionality.
 - **[Non-Blocking Login API Calls](./api-extensions/non-blocking-login-api-calls.md)** - Makes HTTP API calls non-blocking during login to improve performance with slow CRMs
 - **[Webhook Loopback Prevention](./api-extensions/webhook-loopback-prevention.md)** - Prevents infinite webhook loops by temporarily blocking incoming webhooks after tag applications
 - **[Extend HTTP Timeout](./api-extensions/extend-http-timeout.md)** - Increases HTTP timeout to 60 seconds to prevent errors with slow CRM APIs
+- **[Query Filter Cache Optimization](./api-extensions/query-filter-cache-optimization.md)** - Optimize Filter Queries caching behavior for better performance
+- **[API Method Overrides](./api-extensions/api-method-overrides.md)** - Override WP Fusion's CRM API methods with custom functionality
 
 ### 🔑 [Authentication & Login](./authentication-login/)
 Custom login behaviors, user authentication, and registration enhancements.
@@ -41,6 +44,7 @@ WooCommerce and other e-commerce platform integrations and customizations.
 - **[WooCommerce Subscription Renewal Tags](./ecommerce-integration/woocommerce-subscription-renewal-tags.md)** - Prevents applying "active" tags during subscription renewals
 - **[FooEvents Multiple Event Sync](./ecommerce-integration/fooevents-multiple-event-sync.md)** - Syncs multiple FooEvents registrations to numbered custom fields per contact
 - **[WooCommerce Custom Order Status Processing](./ecommerce-integration/woocommerce-custom-order-statuses.md)** - Customizes which order statuses trigger WP Fusion processing and CRM sync
+- **[WooCommerce Subscription Signup Tracking for HubSpot](./ecommerce-integration/woocommerce-subscription-signup-tracking-hubspot.md)** - Tracks new subscription signups with timestamps for HubSpot reporting
 
 ### 🐛 [Debugging & Logging](./debugging-logging/)
 Development and troubleshooting tools for WP Fusion implementations.
@@ -99,6 +103,7 @@ Common use cases and their relevant snippets:
 **E-commerce Enhancements:**
 - [WooCommerce Subscription Renewal Tags](./ecommerce-integration/woocommerce-subscription-renewal-tags.md)
 - [FooEvents Multiple Event Sync](./ecommerce-integration/fooevents-multiple-event-sync.md)
+- [WooCommerce Subscription Signup Tracking](./ecommerce-integration/woocommerce-subscription-signup-tracking-hubspot.md)
 
 **Development Tools:**
 - [Show CRM Field Keys](./debugging-logging/show-crm-field-keys.md)
@@ -144,5 +149,6 @@ Found a bug or have an improvement? See the main [README](../README.md) for cont
 
 ---
 
-**Total Snippets:** 16 organized snippets  
-**Last Updated:** Generated from [Jack Arturo's GitHub Gists](https://gist.github.com/jack-arturo/) (Pages 1, 2 & 3) + Custom implementations
+**Total Snippets:** 20 organized snippets  
+**Last Updated:** December 2024 - Including custom solutions from WP Fusion support tickets  
+**Sources:** [Jack Arturo's GitHub Gists](https://gist.github.com/jack-arturo/), WP Fusion Documentation, and custom support implementations
