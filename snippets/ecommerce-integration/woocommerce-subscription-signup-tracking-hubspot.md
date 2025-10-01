@@ -49,105 +49,21 @@ Choose one of the three methods described in the main [README](../../README.md):
  */
 function wpf_track_subscription_signup_hubspot( $subscription ) {
 
-	// Only proceed if this is the initial activation (not a renewal)
-	if ( $subscription->get_date_created() ) {
-		$created_date = $subscription->get_date_created()->getTimestamp();
-		$current_time = current_time( 'timestamp' );
-		
-		// If subscription was created more than 1 hour ago, this is likely a reactivation
-		if ( ( $current_time - $created_date ) > 3600 ) {
-			
-			// Check if we've already tracked this subscription
-			$already_tracked = $subscription->get_meta( '_wpf_signup_tracked' );
-			
-			if ( $already_tracked ) {
-				wpf_log( 'info', $subscription->get_user_id(), 'Subscription #' . $subscription->get_id() . ' signup already tracked, skipping.' );
-				return;
-			}
-		}
-	}
-
 	$user_id = $subscription->get_user_id();
 	
 	if ( empty( $user_id ) ) {
 		return;
 	}
 
-	// Get subscription details
-	$subscription_products = array();
-	$subscription_value = 0;
-	
-	foreach ( $subscription->get_items() as $item ) {
-		$product = $item->get_product();
-		if ( $product ) {
-			$subscription_products[] = $product->get_name();
-			$subscription_value += $item->get_total();
-		}
-	}
-
 	// Prepare data to sync
 	$update_data = array(
-		'subscription_signup_date'     => $subscription->get_date_created()->getTimestamp() * 1000, // HubSpot uses milliseconds
-		'subscription_products'        => implode( ', ', $subscription_products ),
-		'subscription_initial_value'   => $subscription_value,
-		'subscription_billing_period'  => $subscription->get_billing_period(),
-		'subscription_billing_interval' => $subscription->get_billing_interval(),
+		'subscription_signup_date'  => $subscription->get_date_created()->getTimestamp();
 	);
-
-	// Optional: Add subscription start date if different from signup
-	if ( $subscription->get_date( 'start' ) ) {
-		$update_data['subscription_start_date'] = strtotime( $subscription->get_date( 'start' ) ) * 1000;
-	}
-
-	// Optional: Track trial information
-	if ( $subscription->get_date( 'trial_end' ) ) {
-		$update_data['subscription_has_trial'] = true;
-		$update_data['subscription_trial_end_date'] = strtotime( $subscription->get_date( 'trial_end' ) ) * 1000;
-	}
 
 	wpf_log( 'info', $user_id, 'Tracking subscription signup for subscription #' . $subscription->get_id() );
 
 	// Update the contact in HubSpot
-	wp_fusion()->crm->update_contact( 
-		wpf_get_contact_id( $user_id ), 
-		$update_data, 
-		false 
-	);
-
-	// Fire a custom event in HubSpot (requires WP Fusion 3.40.10+)
-	if ( method_exists( wp_fusion()->crm, 'track_event' ) ) {
-		
-		$event_data = array(
-			'event_name' => 'subscription_signup',
-			'properties' => array(
-				'subscription_id'       => $subscription->get_id(),
-				'subscription_products' => implode( ', ', $subscription_products ),
-				'subscription_value'    => $subscription_value,
-				'billing_period'        => $subscription->get_billing_period(),
-				'billing_interval'      => $subscription->get_billing_interval(),
-				'currency'              => $subscription->get_currency(),
-				'has_trial'             => ! empty( $subscription->get_date( 'trial_end' ) ),
-			)
-		);
-
-		wp_fusion()->crm->track_event( 
-			wpf_get_contact_id( $user_id ), 
-			$event_data 
-		);
-		
-		wpf_log( 'info', $user_id, 'Fired subscription_signup event to HubSpot' );
-	}
-
-	// Mark this subscription as tracked to prevent duplicate tracking
-	$subscription->update_meta_data( '_wpf_signup_tracked', true );
-	$subscription->save();
-
-	// Optional: Also apply tags for segmentation
-	$settings = wpf_get_option( 'woo_subscription_signup_tags', array() );
-	
-	if ( ! empty( $settings['apply_tags'] ) ) {
-		wp_fusion()->user->apply_tags( $settings['apply_tags'], $user_id );
-	}
+	wp_fusion()->user->push_user_meta( $user_id, $update_data );
 }
 
 add_action( 'woocommerce_subscription_status_active', 'wpf_track_subscription_signup_hubspot' );
@@ -198,32 +114,6 @@ add_filter( 'wpf_configure_settings', 'wpf_subscription_signup_settings', 20, 2 
 ```
 
 ## Configuration
-
-### Required HubSpot Fields
-
-Create these custom properties in HubSpot (Contacts → Actions → Edit properties):
-
-1. **subscription_signup_date** (Date picker)
-   - Used for the primary signup timestamp
-   - Enables date range filtering in reports
-
-2. **subscription_products** (Single-line text)
-   - Stores comma-separated list of subscribed products
-
-3. **subscription_initial_value** (Number)
-   - The initial subscription value
-
-4. **subscription_billing_period** (Single-line text)
-   - Values: day, week, month, year
-
-5. **subscription_billing_interval** (Number)
-   - e.g., 1, 3, 6, 12
-
-### Optional Fields
-
-- **subscription_start_date** (Date picker)
-- **subscription_has_trial** (Single checkbox)
-- **subscription_trial_end_date** (Date picker)
 
 ### Creating HubSpot Reports
 
